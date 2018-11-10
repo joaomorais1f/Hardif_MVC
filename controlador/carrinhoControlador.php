@@ -77,3 +77,29 @@ function deletar ($id) {
 }
 
 
+function adicionarQuantidade ($id) {
+    if (ehPost()) {
+        $id = $id;
+        $quantidade = $_POST["quantidade"];
+        //echo "quantidade para excluir = ".$quantidade."<br>";
+        //echo "ID do respectivo produto = ".$id. "<br>";
+        for ($i = 0; $i < count($_SESSION["carrinho"]); $i++) {
+            if ($_SESSION["carrinho"][$i]["id"] == $id) {
+                //print_r( $_SESSION["carrinho"][$i]["id"]);
+                $_SESSION["carrinho"][$i]["quantidade"] = $_SESSION["carrinho"][$i]["quantidade"] + $quantidade;
+                /*if ($_SESSION["carrinho"][$i]["quantidade"] == 0) {
+                    unset($_SESSION["carrinho"][$i]);
+                    $_SESSION["carrinho"] = array_values($_SESSION["carrinho"]);
+                    redirecionar("carrinho/index");
+                }*/
+
+            }
+        }
+    }
+    redirecionar("carrinho/index");
+
+
+
+}
+
+

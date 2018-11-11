@@ -80,4 +80,17 @@ function ExibirProdutos ($resultado_produtos) {
 	}
 	return $numero_pagina;
 }
+
+
+
+function atualizarEstoque ($id,$estoque_atual,$quantidade_comprada) {
+	print_r($estoque_atual);
+	$estoque_atual = $estoque_atual - $quantidade_comprada;
+	$sql = "UPDATE cadastroproduto SET IDproduto = '$id', quantidade = $estoque_atual WHERE IDproduto = '$id'";
+	$resultado = mysqli_query($cnx = conn(), $sql);
+	if (!$resultado) {
+		echo "Erro ao atualizar estoque ".mysqli_error($cnx);
+	}
+
+}
 ?>

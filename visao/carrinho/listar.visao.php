@@ -64,7 +64,9 @@
                                     </form>
                                 </td> 
 
-                                <?php $total = $total + ($quantidade * $produto["preco"]);?>
+                                <?php $total = $total + ($quantidade * $produto["preco"]);
+                                //$_SESSION["carrinho"]["total"] = $total;
+                                ?>
                                 <?php }?>
                                 <!--<td><a href="./carrinho/deletar/<?=$produto["IDproduto"]?>" class="btn btn-danger">del</a></td> -->
                             </tr> 

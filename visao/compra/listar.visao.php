@@ -137,9 +137,9 @@
 						</div>
 					</form>
 
-					<center><button type="button" class="btn btn-success" style="margin-top:5%;">
+					<center><a href="./pedido/finalizarPedido"><button type="button" class="btn btn-success" style="margin-top:5%;">
 						Finalizar Compra
-					</button></center>
+					</button> </a></center>
 				</div>	
 			</div>
 

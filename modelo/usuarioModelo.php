@@ -18,7 +18,7 @@ function pegarUsuarioPorId($id) {
     return $usuario;
 }
 
-function adicionarUsuario($nome, $email, $sexo,$senha, $CPF, $telefone, $endereco,$cidade,$estado,$cep,$tipo) {
+function adicionarUsuario($nome, $email, $sexo,$senha, $CPF, $telefone, $endereco,$cidade,$estado,$cep) {
     $sql = "INSERT INTO dadosusuario (nome, email, sexo, senha, CPF, telefone, endereco,cidade,estado,cep,tipo) 
 			VALUES ('$nome', '$email', '$sexo','$senha', '$CPF', '$telefone', '$endereco','$cidade','$estado','$cep','user')";
     $resultado = mysqli_query($cnx = conn(), $sql);

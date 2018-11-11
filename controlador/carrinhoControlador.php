@@ -8,10 +8,10 @@ function index()
 	
    if (isset($_SESSION["carrinho"])) {
     $produtosCarrinho = array();
+    
     foreach ($_SESSION["carrinho"] as $produtoID) {
         $produtosCarrinho[] = pegarProdutoPorId($produtoID["id"]);
     }
-
 
     $dados["produtos"] = $produtosCarrinho;
     exibir("carrinho/listar", $dados);
@@ -76,7 +76,7 @@ function deletar ($id) {
     redirecionar("carrinho/index");
 }
 
-
+/** anon */
 function adicionarQuantidade ($id) {
     if (ehPost()) {
         $id = $id;

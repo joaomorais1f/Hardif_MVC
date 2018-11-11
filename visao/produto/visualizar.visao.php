@@ -9,16 +9,9 @@
 			<div class="col-lg-6">
 				<h2><?=$produto['nome']?></h2>
 				<p>Código: <?=$produto['IDproduto']?></p>
-				<?php
-				$comprado = 0;
-				if (isset($_SESSION["carrinho"])) {
-				foreach ($_SESSION["carrinho"] as $prod) {
-					if ($produto["IDproduto"] == $prod["id"])
-					$comprado = $prod['quantidade'];
-				}
-}
-				?> 
-				<p><strong>Estoque:</strong> <?=$produto['quantidade'] - $comprado ?></p>
+				
+				 
+				<p><strong>Estoque:</strong> <?=$produto['quantidade'] ?></p>
 			</div>
 
 			<div class="col-lg-6">

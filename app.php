@@ -9,8 +9,8 @@ require_once 'bibliotecas/uteis.php';
 //libs opcionais
 require_once 'bibliotecas/alert.php';
 require_once 'bibliotecas/auth.php';
-
+	
 define('CONTROLADOR_PADRAO', 'produto');
-define('BASE_URL', 'http://localhost/Hardif/');
+define('BASE_URL', 'http://localhost/Hardif_MVC-master/');
 
 ?>

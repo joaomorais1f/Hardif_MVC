@@ -25,17 +25,16 @@ function inserirProdutoPedido($id_pedido,$id_produto,$quantidade_comprada){
 }
 
 function pegarprodutospedidosespecificos($id){
-	$sql = "SELECT cp.nome, cp.imagem, cp.preco from pedido as p 
+	$sql = "SELECT cp.nome, cp.imagem, cp.preco, pp.quantidade from pedido as p 
 	INNER JOIN produtopedido as pp ON (p.IDpedido = pp.IDpedido)
 	INNER JOIN cadastroproduto as cp ON (pp.IDproduto = cp.IDproduto)
-	WHERE pe.IDpedido = '$id'";
+	WHERE p.IDpedido = '$id'";
 
 	$resultado = mysqli_query($cnx = conn(), $sql);
 
 	if (!$resultado) {
 		echo "Erro inesperado ".mysqli_error($cnx);
 	}
-$produtos_pedidos = array();
 	while ($linha = mysqli_fetch_assoc($resultado)) {
 		$produtos_pedidos[] = $linha;
 	}
@@ -49,26 +48,22 @@ function receberpedidosrealizados ($id) {
 	$resultado = mysqli_query($cnx = conn(), $sql);
 
 	if (!$resultado) {
-		echo "erro ".mysqli_error($cnx);
+		echo "erro inesperado".mysqli_error($cnx);
 		die();
 	}
-$produtos_pedidos = array();
+
 	while($linha = mysqli_fetch_assoc($resultado)){
-$produtos_pedidos = pegarprodutospedidosespecificos($linha["IDpedido"]);
+$produtos_comprados["produtos_comprados"] = pegarprodutospedidosespecificos($linha["IDpedido"]);	
+$pedidos_realizados = array_merge_recursive($linha,$produtos_comprados);
 	}
 
-if (!empty($produtos_pedidos)) {
-	return $produtos_pedidos;
-} else {
-	return false;
-}
+	if (!empty($pedidos_realizados)) {
+		return $pedidos_realizados;
+	} else {
+		return null;
+	}
 
 }
-
-
-
-
-
 
 
 ?>

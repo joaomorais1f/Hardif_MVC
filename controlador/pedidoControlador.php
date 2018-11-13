@@ -4,7 +4,36 @@ require_once 'modelo/pedidoModelo.php';
 require_once 'modelo/usuarioModelo.php';
 
 
+function index () {
+	$id_cliente = $_SESSION['auth']['user']['IDUsuario'];
 
+	if($pedidos = receberpedidosrealizados($id_cliente)){
+		$dados["pedidos"] = true;
+			foreach ($pedidos as $pedido => $valor) {
+				if ($pedido == "produtos_comprados") {
+					$produtos = $pedidos[$pedido];
+					$dados["produtos_comprados"] = $produtos;
+				} else {
+					$pedidos_realizados[$pedido] = $pedidos[$pedido];
+					$dados["pedidos_realizados"] = $pedidos_realizados;
+				}        
+			}
+
+		
+	}else{
+		$dados["pedidos"] = null;
+	}
+
+
+
+/*echo "<pre>";
+print_r($dados);
+*/
+
+exibir("pedido/listar", $dados);
+
+
+}
 
 function finalizarPedido () {
 	//$produtos_comprados = $_SESSION["carrinho"];
@@ -40,8 +69,8 @@ function finalizarPedido () {
 	}
 
 
-unset($_SESSION["carrinho"]);
-redirecionar("produto/index");
+	unset($_SESSION["carrinho"]);
+	redirecionar("produto/index");
 
 
 }

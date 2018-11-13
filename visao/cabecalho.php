@@ -56,6 +56,7 @@
 
 				?>
 				<li><a href="./carrinho/index">Carrinho</a></li>
+				<li><a href="./pedido/index">Pedidos</a></li>
 				<li><a href="./login/logout">Logout</a></li>
 				<?php }?>
 			</ul>

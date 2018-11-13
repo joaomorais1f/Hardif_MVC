@@ -6,7 +6,7 @@
     <?php else: ?>
 
     <?php
-echo "<h1>Você realizou um pedido</h1>";
+echo "<h1>Você realizou um pedido, obrigado</h1>";
     ?>
 
 
